@@ -1,0 +1,15 @@
+package cis1068;
+
+//Egi Rama
+//Monday August 28th
+//Assignment 1. Greetings
+
+//This program prints out hello to greet the lab instructor.
+
+public class Greeting {
+
+      public static void main(String[] args) {
+            // TODO Auto-generated method stub
+            System.out.println("Hello, Wenkang Zhan!");
+      }
+}
