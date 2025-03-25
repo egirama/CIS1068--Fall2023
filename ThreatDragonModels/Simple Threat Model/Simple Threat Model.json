@@ -28,8 +28,8 @@
             },
             "visible": true,
             "shape": "trust-boundary-box",
-            "id": "b477d793-2631-4dd3-9dd8-b1efb909fca3",
             "zIndex": -1,
+            "id": "b477d793-2631-4dd3-9dd8-b1efb909fca3",
             "data": {
               "type": "tm.BoundaryBox",
               "name": "Trust Boundary",
@@ -59,6 +59,7 @@
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 1,
             "ports": {
               "groups": {
                 "top": {
@@ -142,7 +143,6 @@
               ]
             },
             "id": "1625fae6-4880-47f8-bd0b-93c3f61cb1f7",
-            "zIndex": 1,
             "data": {
               "type": "tm.Actor",
               "name": "Browser",
@@ -151,7 +151,38 @@
               "reasonOutOfScope": "",
               "hasOpenThreats": false,
               "providesAuthentication": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "13949d34-428a-41e4-8239-7fbae4d82413",
+                  "title": "threat",
+                  "status": "Mitigated",
+                  "severity": "Medium",
+                  "type": "Spoofing",
+                  "description": "This is when attackers impersonate the user to gain access to their information. This can happen from attackers using the user's login information and password",
+                  "mitigation": "To mitigate spoofing, we can use OAuth2.0 which lets applications access a user’s data without needing their password which means your direct information(password) doesn't get leaked.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 1,
+                  "score": "6"
+                },
+                {
+                  "id": "ebb059ed-e1ee-4d5e-be74-52756e3cb7fa",
+                  "title": "threat",
+                  "status": "Mitigated",
+                  "severity": "Medium",
+                  "type": "Repudiation",
+                  "description": "Repudiation is when a user denies having performed an action, and the system can’t prove otherwise.",
+                  "mitigation": "To mitigate this, organizations can use audit logging because it tracks actions and who performed them\n\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 4,
+                  "score": "5"
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "repudiation": 1
+              }
             }
           },
           {
@@ -175,6 +206,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 2,
             "ports": {
               "groups": {
                 "top": {
@@ -258,7 +290,6 @@
               ]
             },
             "id": "8f869937-58e6-4faa-b35a-df8d1ae8456a",
-            "zIndex": 2,
             "data": {
               "type": "tm.Process",
               "name": "web server",
@@ -270,13 +301,48 @@
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "f42e4944-e702-456e-8a0b-db7fe1acd415",
+                  "title": "threat",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Manipulating data to exploit application behavior, escalate privileges, or inject malicious content.\n\n",
+                  "mitigation": "To mitigate organizations can implement Web Application Firewalls to block tampering patterns. Also, Input validation libraries and secure cookie handling are good for ensuring request integrity.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 3,
+                  "score": "7"
+                },
+                {
+                  "id": "bdaf01d5-de3d-42ed-8410-f6cc839abacb",
+                  "title": "threat",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "unauthorized release of sensitive or confidential data",
+                  "mitigation": "One way to mitigate this is using HTTPS to keep data private that is being sent on the internet.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 7,
+                  "score": "8"
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 2,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
             "position": {
               "x": -130.00000000000006,
-              "y": -2100
+              "y": -2090
             },
             "size": {
               "width": 180,
@@ -294,6 +360,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 3,
             "ports": {
               "groups": {
                 "top": {
@@ -377,7 +444,6 @@
               ]
             },
             "id": "008f0a06-fe1d-4cb9-a56e-ef96073fa3d7",
-            "zIndex": 3,
             "data": {
               "type": "tm.Process",
               "name": "application server",
@@ -389,7 +455,42 @@
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "47fcb13e-e828-42e2-a079-fc577833315f",
+                  "title": "Threat",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Manipulating data to exploit application behavior, escalate privileges, or inject malicious content.",
+                  "mitigation": "To mitigate organizations can implement Web Application Firewalls to block tampering patterns. Also, Input validation libraries and secure cookie handling are good for ensuring request integrity.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 8,
+                  "score": "7"
+                },
+                {
+                  "id": "cfe8f307-a66d-4950-9519-ee128239c525",
+                  "title": "New STRIDE threat",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Elevation of privilege",
+                  "description": "Attackers try to gain higher-level access by exploiting weaknesses in access control checks or by manipulating user roles and permissions.",
+                  "mitigation": "Mitigate by having role-based access control so it can check what each user is allowed ",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 9,
+                  "score": "8"
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 3,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 1
+              }
             }
           },
           {
@@ -416,6 +517,7 @@
             },
             "visible": true,
             "shape": "store",
+            "zIndex": 4,
             "ports": {
               "groups": {
                 "top": {
@@ -499,7 +601,6 @@
               ]
             },
             "id": "f97602ba-1e37-4b12-bcf6-6c421de4848e",
-            "zIndex": 4,
             "data": {
               "type": "tm.Store",
               "name": "database server",
@@ -512,7 +613,53 @@
               "isSigned": false,
               "storesCredentials": false,
               "storesInventory": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "f19d4e6c-2e91-4ec2-b473-948f440f25b1",
+                  "title": "New STRIDE threat",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Manipulating data to exploit application behavior, escalate privileges, or inject malicious content.",
+                  "mitigation": "To mitigate organizations can implement Web Application Firewalls to block tampering patterns. Also, Input validation libraries and secure cookie handling are good for ensuring request integrity.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 10,
+                  "score": "7"
+                },
+                {
+                  "id": "37eae46c-63a2-4e50-8d5a-30cded13da0e",
+                  "title": "New STRIDE threat",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "unauthorized release of sensitive or confidential data",
+                  "mitigation": "One way to mitigate this is using HTTPS to keep data private that is being sent on the internet.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 11,
+                  "score": "8"
+                },
+                {
+                  "id": "9fce53d0-d546-44f0-8700-b8a47941766a",
+                  "title": "New STRIDE threat",
+                  "status": "Mitigated",
+                  "severity": "Medium",
+                  "type": "Repudiation",
+                  "description": "Repudiation is when a user denies having performed an action, and the system can’t prove otherwise.",
+                  "mitigation": "To mitigate this, organizations can use audit logging because it tracks actions and who performed them\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 13,
+                  "score": "5"
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 2,
+                "repudiation": 2,
+                "informationDisclosure": 2,
+                "denialOfService": 0
+              }
             }
           },
           {
@@ -793,6 +940,6 @@
     ],
     "diagramTop": 2,
     "reviewer": "",
-    "threatTop": 0
+    "threatTop": 13
   }
 }
